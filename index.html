@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script defer src="js/suisai.js"></script>
+  <script defer src="js/descriptions/chsDescription.js"></script>
+  <script defer src="js/descriptions/missionDescription.js"></script>
+  <script defer src="js/descriptions/taskDescription.js"></script>
+  <script defer src="js/descriptions/yearDescription.js"></script>
+  <script defer src="js/descriptions/inviteDescription.js"></script>
+  <script defer src="js/index.js"></script>
+  <title>Сюцай Экспресс-консультация</title>
+</head>
+
+<body>
+  <div class="container-fluid" id="app">
+    <h1><a href="http://suzai.ru/syuczaj-chislovaya-nauka/" target="_blank">Сюцай Экспресс-консультация</a></h1>
+    
+   
+    <div>
+      <form action="#" class="form-inline">
+       
+        <input type="text" placeholder="ФИО" class="form-control"  min="1" max="31" step="1" v-model="fio">
+      
+      </form>
+      <form action="#" class="form-inline">
+       
+        <input type="number" placeholder="дд" class="form-control"  min="1" max="31" step="1" v-model="day">
+        <input type="number" placeholder="мм" class="form-control "  min="1" max="12" step="1" v-model="month">
+        <input type="number" placeholder="гггг" class="form-control"  min="1900" max="2050" step="1" v-model="year">
+      
+      </form>
+    </div>
+    <hr>
+    <div>Виды Консултаций:
+      <ul>
+        <li>Экспресс-консультация</li>
+        <li>1 Час</li>
+        <li>2 Часа</li>
+        <li>Недельная работа</li>
+      </ul>
+    </div>
+    <hr>
+    <div>
+      <!-- <p>Число Сознания {{chs}}</p>
+      <p>Миссия {{mission}}</p>
+      <hr>
+      <p>Личный Год {{selfYear}}</p>
+      <p>Личный Месяц {{selfMonth}}</p>
+      <p>Личный День {{selfDay}}</p> -->
+    </div>
+    <hr>
+    <div>
+      <h3>Экспресс-консультация по науке Сюцай</h3>
+      <hr>
+      <p>{{fio}}.</p>
+      <p>Дата рождения: {{day}}.{{month}}.{{year}}</p>
+      <p>Число Сознания: {{chs}}. Миссия: {{mission}}. Личный Год: {{selfYear}}</p>
+      <br>
+
+      <h4>Число Сознания</h2>
+      <pre>{{chsDescription[chs-1]}}</pre>
+      <h4>Миссия</h2>
+      <pre>{{missionDescription[mission-1]}}</pre>
+      <h4>Задача от Творца</h2>
+      <pre>{{taskDescription[chs-1]}}</pre>
+      <h4>Личный Год</h2>
+      <pre>{{yearDescription[selfYear-1]}}</pre>
+      <h4>Виды Консултаций</h2>
+      <pre>{{inviteDescription}}</pre>
+    </div>
+    <hr>
+    <p>
+      Всего хорошего,<br>
+      Михей<br>
+      Я <a href="https://vk.com/mihey_coach" target="_blank">ВКонтакте</a> и <a href="https://www.instagram.com/mihey_coach/" target="_blank">Instagram</a>. Давайте дружить</p>
+    <p>P.S. Я буду очень признателен за Благодарность. Сбербанк: 89105990489</p>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
