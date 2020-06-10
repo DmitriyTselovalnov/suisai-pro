@@ -31,18 +31,31 @@ function getSumNumber(num) {
     return sum;
 }
 
-
-// simplify()
-// simplify("123f")
-// simplify(124231)
-// simplify("12221234")
-
-
-// console.log(reduceNumberSimTople(46));
-
-// module.exports = {
-//     simplify,
-//     formatText,
-//     reduceNumberSimTople,
-//     getSumNumber
-// }
+const createLetterNumber = (value, letters) => ( { value, letters })
+const letterToNumberList = [
+    createLetterNumber(1, '1aijqy'),
+    createLetterNumber(2, '2bkr'),
+    createLetterNumber(3, '3clsg'),
+    createLetterNumber(4, '4dmt'),
+    createLetterNumber(5, '5ehnx'),
+    createLetterNumber(6, '6uvw'),
+    createLetterNumber(7, '7oz'),
+    createLetterNumber(8, '8fp'),
+    createLetterNumber(9, '9'),
+]
+function calculateLetterToNumber(text) {
+    console.log(text)
+    let letters = text.split("")
+    console.log(letters)
+    let result = 0
+    letters.forEach(letter => {
+        letterToNumberList.forEach(letterValue => {
+            console.log(letter)
+            if (letterValue.letters.includes(letter.toLowerCase())) {
+                return result += letterValue.value
+            }
+        })
+    })
+    console.log('result', result)
+    return result
+}

@@ -17,71 +17,79 @@
   <script defer src="js/descriptions/yearDescription.js"></script>
   <script defer src="js/descriptions/inviteDescription.js"></script>
   <script defer src="js/index.js"></script>
-  <title>Сюцай Экспресс-консультация</title>
+  <title>Сюцай PRO</title>
 </head>
 
 <body>
   <div class="container-fluid" id="app">
-    <h1><a href="http://suzai.ru/syuczaj-chislovaya-nauka/" target="_blank">Сюцай Экспресс-консультация</a></h1>
-    
-   
+    <h1><a href="http://suzai.ru/syuczaj-chislovaya-nauka/" target="_blank">Сюцай. PRO</a></h1>
     <div>
+      <h3>Посчитать Город, Имя, Карточку или Номер </h3>
+      <div>
+        <span><i>Считает только на английском</i></span>
+        <input type="text" placeholder="Введите текст на английском. Например, Moskva" v-model="textCalc"
+          class="form-control mb-4">
+        <div>
+          <strong>Итоговая Цифра: {{textCalcResult}}</strong>
+          <ul class="list-group">
+            <li class="list-group-item" :class="{active: textCalcResult==1}" >1 Популярность</li>
+            <li class="list-group-item" :class="{active: textCalcResult==2}">2 Личное благополучие, к замужеству</li>
+            <li class="list-group-item" :class="{active: textCalcResult==3}">3 Солидарность</li>
+            <li class="list-group-item" :class="{active: textCalcResult==4}">4 Отчуждденность</li>
+            <li class="list-group-item" :class="{active: textCalcResult==5}">5 Артистизм</li>
+            <li class="list-group-item" :class="{active: textCalcResult==6}">6 Успех, к замужеству</li>
+            <li class="list-group-item" :class="{active: textCalcResult==7}">7 Вызов природе</li>
+            <li class="list-group-item" :class="{active: textCalcResult==8}">8 Постоянный упорный труд</li>
+            <li class="list-group-item" :class="{active: textCalcResult==9}">9 Эмоциональная глубина</li>
+            </l>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div>
+      <h3>Экспресс Консултация</h3>
+
       <form action="#" class="form-inline">
-       
-        <input type="text" placeholder="ФИО" class="form-control"  min="1" max="31" step="1" v-model="fio">
-      
+
+        <input type="text" placeholder="ФИО" class="form-control" min="1" max="31" step="1" v-model="fio">
+
       </form>
       <form action="#" class="form-inline">
-       
-        <input type="number" placeholder="дд" class="form-control"  min="1" max="31" step="1" v-model="day">
-        <input type="number" placeholder="мм" class="form-control "  min="1" max="12" step="1" v-model="month">
-        <input type="number" placeholder="гггг" class="form-control"  min="1900" max="2050" step="1" v-model="year">
-      
+
+        <input type="number" placeholder="дд" class="form-control" min="1" max="31" step="1" v-model="day">
+        <input type="number" placeholder="мм" class="form-control " min="1" max="12" step="1" v-model="month">
+        <input type="number" placeholder="гггг" class="form-control" min="1900" max="2050" step="1" v-model="year">
+
       </form>
     </div>
     <hr>
-    <div>Виды Консултаций:
-      <ul>
-        <li>Экспресс-консультация</li>
-        <li>1 Час</li>
-        <li>2 Часа</li>
-        <li>Недельная работа</li>
-      </ul>
-    </div>
-    <hr>
-    <div>
-      <!-- <p>Число Сознания {{chs}}</p>
-      <p>Миссия {{mission}}</p>
-      <hr>
-      <p>Личный Год {{selfYear}}</p>
-      <p>Личный Месяц {{selfMonth}}</p>
-      <p>Личный День {{selfDay}}</p> -->
-    </div>
     <hr>
     <div>
       <h3>Экспресс-консультация по науке Сюцай</h3>
       <hr>
-      <p>{{fio}}.</p>
+      <p>Имя: {{fio}}</p>
       <p>Дата рождения: {{day}}.{{month}}.{{year}}</p>
       <p>Число Сознания: {{chs}}. Миссия: {{mission}}. Личный Год: {{selfYear}}</p>
       <br>
 
       <h4>Число Сознания</h2>
-      <pre>{{chsDescription[chs-1]}}</pre>
-      <h4>Миссия</h2>
-      <pre>{{missionDescription[mission-1]}}</pre>
-      <h4>Задача от Творца</h2>
-      <pre>{{taskDescription[chs-1]}}</pre>
-      <h4>Личный Год</h2>
-      <pre>{{yearDescription[selfYear-1]}}</pre>
-      <h4>Виды Консултаций</h2>
-      <pre>{{inviteDescription}}</pre>
+        <pre>{{chsDescription[chs-1]}}</pre>
+        <h4>Миссия</h2>
+          <pre>{{missionDescription[mission-1]}}</pre>
+          <h4>Задача от Творца</h2>
+            <pre>{{taskDescription[chs-1]}}</pre>
+            <h4>Личный Год</h2>
+              <pre>{{yearDescription[selfYear-1]}}</pre>
+              <h4>Виды Консултаций</h2>
+                <pre>{{inviteDescription}}</pre>
     </div>
     <hr>
     <p>
       Всего хорошего,<br>
       Михей<br>
-      Я <a href="https://vk.com/mihey_coach" target="_blank">ВКонтакте</a> и <a href="https://www.instagram.com/mihey_coach/" target="_blank">Instagram</a>. Давайте дружить</p>
+      Я <a href="https://vk.com/mikhail_eco_coach" target="_blank">ВКонтакте</a> и <a
+        href="https://www.instagram.com/mihey_coach/" target="_blank">Instagram</a>. Давайте дружить</p>
     <p>P.S. Я буду очень признателен за Благодарность. Сбербанк: 89105990489</p>
   </div>
 

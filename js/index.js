@@ -1,6 +1,7 @@
 const app = new Vue({
   el: "#app",
   data: {
+    textCalc: '',
     fio: "",
     day: "",
     month: "",
@@ -33,6 +34,10 @@ const app = new Vue({
     },
     selfDay() {
       return simplify(this.selfMonth + " " + new Date().getDate())
+    },
+    textCalcResult() {
+      if (!this.textCalc) return 0
+      return simplify(calculateLetterToNumber(this.textCalc))
     }
   }
 });
