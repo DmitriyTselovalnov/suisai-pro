@@ -18,24 +18,69 @@
   <script defer src="js/descriptions/inviteDescription.js"></script>
   <script defer src="js/index.js"></script>
   <title>Сюцай PRO</title>
+  <style>
+    .anchor {
+      padding-top: 80px;
+      margin-top: -80px;
+    }
+
+    .copy {
+      cursor: cell;
+      background-color: none;
+      -webkit-transition: background-color 1s;
+      transition: background-color 1s;
+    }
+
+    .copy:hover {
+      background-color: ghostwhite;
+      -webkit-transition: background-color 1s;
+      transition: background-color 1s;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container-fluid" id="app">
-    <h1><a href="http://suzai.ru/syuczaj-chislovaya-nauka/" target="_blank">Сюцай. PRO</a></h1>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Сюцай. PRO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#number">Число или Имя</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#express">Экспресс Консультация</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#instructions">Видеоинструкция</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#invite">Приглашение</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacts">Обо мне 2/4</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid mt-5 pt-3" id="app">
+
     <div>
-      <h3>Посчитать Город, Имя, Карточку или Номер </h3>
+      <h3 id='number' class='anchor'>Посчитать Число, Город, Имя, Карточку или Телефон </h3>
       <div>
-        <span><i>Считает только на английском</i></span>
+        <span><i>Буквы считает только на английском для точности</i></span>
         <input type="text" placeholder="Введите текст на английском. Например, Moskva" v-model="textCalc"
-          class="form-control mb-4">
+          class="form-control mb-4 mt-2">
         <div>
           <strong>Итоговая Цифра: {{textCalcResult}}</strong>
           <ul class="list-group">
             <li class="list-group-item" :class="{active: textCalcResult==1}">1 Популярность</li>
             <li class="list-group-item" :class="{active: textCalcResult==2}">2 Личное благополучие, к замужеству</li>
             <li class="list-group-item" :class="{active: textCalcResult==3}">3 Солидность</li>
-            <li class="list-group-item" :class="{active: textCalcResult==4}">4 Отчуждденность</li>
+            <li class="list-group-item" :class="{active: textCalcResult==4}">4 Отчужденность</li>
             <li class="list-group-item" :class="{active: textCalcResult==5}">5 Артистизм</li>
             <li class="list-group-item" :class="{active: textCalcResult==6}">6 Успех, к замужеству</li>
             <li class="list-group-item" :class="{active: textCalcResult==7}">7 Вызов природе</li>
@@ -46,53 +91,107 @@
       </div>
     </div>
     <hr>
+    <blockquote class="blockquote mb-0" style="font-size: 12px;">
+      <footer class="blockquote-footer">Мы - Мастера, и для нас этот сайт в подарок, абсолютно без оплаты, всегда!
+        <br /><cite>Если кто-то от вас хотел денег за подарок, спросите его дату рождения ^-^ </cite>
+      </footer>
+    </blockquote>
+    <hr>
 
     <div>
-      <h3>Экспресс Консултация</h3>
+      <div id='express' class='anchor'>
+        <h3 class='copy' onclick="setSelection('consultation')">Экспресс Консультация</h3>
+      </div>
 
       <form action="#" class="form-inline">
 
         <input type="text" placeholder="ФИО" class="form-control" min="1" max="31" step="1" v-model="fio">
 
       </form>
-      <form action="#" class="form-inline">
+      <form action="#" class="form-inline mt-2">
 
         <input type="number" placeholder="дд" class="form-control" min="1" max="31" step="1" v-model="day">
         <input type="number" placeholder="мм" class="form-control " min="1" max="12" step="1" v-model="month">
         <input type="number" placeholder="гггг" class="form-control" min="1900" max="2050" step="1" v-model="year">
 
       </form>
+      <div class='mt-2'>
+        <h6>Нажмите на заголовки или кнопку для выделения и копирования </h6>
+        <button class='btn btn-sm btn-primary' onclick="setSelection('consultation')">ВСЁ</button>
+
+        <button class='btn btn-sm btn-success' onclick="setSelection('chs')">ЧС</button>
+        <button class='btn btn-sm btn-success' onclick="setSelection('mission')">Миссия</button>
+        <button class='btn btn-sm btn-success' onclick="setSelection('task')">Задача</button>
+        <button class='btn btn-sm btn-success' onclick="setSelection('year')">Год</button>
+      </div>
     </div>
     <hr>
     <hr>
-    <div>
-      <h3>Экспресс-консультация по науке Сюцай</h3>
-      <hr>
+    <div id='consultation'>
+      <h3 class='copy mb-2' onclick="setSelection('consultation')">Экспресс-консультация по науке Сюцай</h3>
       <p>Имя: {{fio}}</p>
       <p>Дата рождения: {{day}}.{{month}}.{{year}}</p>
       <p>Число Сознания: {{chs}}. Миссия: {{mission}}. Личный Год: {{selfYear}}</p>
       <br>
 
-      <h4>Число Сознания</h2>
-        <pre>{{chsDescription[chs-1]}}</pre>
-        <h4>Миссия</h2>
-          <pre>{{missionDescription[mission-1]}}</pre>
-          <h4>Задача от Творца</h2>
-            <pre>{{taskDescription[chs-1]}}</pre>
-            <h4>Личный Год</h2>
-              <pre>{{yearDescription[selfYear-1]}}</pre>
-              <h4>Виды Консултаций</h2>
-                <pre>{{inviteDescription}}</pre>
+      <h4 class='copy' onclick="setSelection('chs')">Число Сознания</h4>
+      <pre id="chs">{{day && chsDescription[chs-1]}}</pre>
+      <h4 class='copy' onclick="setSelection('mission')">Миссия</h4>
+      <pre id="mission">{{day && month && year && missionDescription[mission-1]}}</pre>
+      <h4 class='copy' onclick="setSelection('task')">Задача от Творца</h4>
+      <pre id="task">{{day && taskDescription[chs-1]}}</pre>
+      <h4 class='copy' onclick="setSelection('year')">Личный Год</h4>
+      <pre id="year">{{day && month && yearDescription[selfYear-1]}}</pre>
     </div>
     <hr>
-    <p>
-      Всего хорошего,<br>
-      Михей<br>
-      Я <a href="https://vk.com/mikhail_eco_coach" target="_blank">ВКонтакте</a> и <a
-        href="https://www.instagram.com/mihey_coach/" target="_blank">Instagram</a>. Давайте дружить</p>
-    <p>P.S. Я буду очень признателен за Благодарность. Сбербанк: 89105990489</p>
+
+    <div class="anchor" id="invite">
+      <h3 class='copy' onclick="setSelection('inviteText')">Приглашение на разбор</h3>
+      <pre id="inviteText">{{inviteDescription}}</pre>
+    </div>
+    <hr>
+    <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
+    <div style="max-width: 500px;">
+
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/rKDj7fX3fq8" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <hr>
+
+    <p class='anchor' id='contacts'>
+    <h3>Обо мне 2/4</h3>
+    Всего хорошего,<br>
+    С любовью, Ваш Мастер Михей 8 с PRO потока, 02.04.1996 (ЧС 2, Миссия 4).
+    <br /><a href="https://youtu.be/if273-_weIg" target="_blank">Моя Видеовизитка</a><br>
+
+    Я <a href="https://vk.com/mikhail_eco_coach" target="_blank">ВКонтакте</a> и <a
+      href="https://www.instagram.com/mikhail_eco_coach/" target="_blank">Instagram</a>, но лучше в <a
+      href="https://t.me/mikhail_eco_coach" target="_blank">Телеграмм</a> <a href="https://t.me/mikhail_eco_coach"
+      target="_blank">https://t.me/mikhail_eco_coach</a>.
+    <br />Телефон для связи: <a href="tel:+79105990489">+79105990489</a>
+    <br />Давайте дружить, Ваш Михей 2/4.</p>
+    <p>P.S. Я буду признателен за Тёплые слова!.</p>
   </div>
 
+  <script>
+    function setSelection(id) {
+      var target = document.getElementById(id);
+      var rng, sel;
+      if (document.createRange) {
+        rng = document.createRange();
+        rng.selectNode(target)
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(rng);
+      } else {
+        var rng = document.body.createTextRange();
+        rng.moveToElementText(target);
+        rng.select();
+      }
+      navigator.clipboard.writeText(sel.toString())
+    }
+  </script>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
