@@ -77,21 +77,29 @@
         .w-form-inline-dd {
             width: 40px;
         }
+
         .w-form-inline-dddd {
             width: 50px;
+        }
+
+        .large-text {
+            white-space: pre-wrap;
         }
     </style>
 </head>
 
-<body >
+<body>
 
 <div class="container-fluid mt-5 pt-3" id="app">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="d-flex align-items-center">
             <a class="navbar-brand" href="#">Сюцай. PRO</a>
-            <input type="number" placeholder="дд" class="form-control form-control-sm w-form-inline-dd" min="1" max="31" step="1" v-model="day">
-            <input type="number" placeholder="мм" class="form-control form-control-sm w-form-inline-dd" min="1" max="12" step="1" v-model="month">
-            <input type="number" placeholder="гггг" class="form-control form-control-sm w-form-inline-dddd" min="1900" max="2050" step="1" v-model="year">
+            <input type="number" placeholder="дд" class="form-control form-control-sm w-form-inline-dd" min="1" max="31"
+                   step="1" v-model="day">
+            <input type="number" placeholder="мм" class="form-control form-control-sm w-form-inline-dd" min="1" max="12"
+                   step="1" v-model="month">
+            <input type="number" placeholder="гггг" class="form-control form-control-sm w-form-inline-dddd" min="1900"
+                   max="2050" step="1" v-model="year">
             <span class="small ml-1">{{`ЧС${chs} М${mission} ЛГ${selfYear}`}}</span>
         </div>
     </nav>
@@ -108,7 +116,8 @@
         <form action="#" class="form-inline mt-2">
             <input type="number" placeholder="дд" class="form-control col-3" min="1" max="31" step="1" v-model="day">
             <input type="number" placeholder="мм" class="form-control col-3" min="1" max="12" step="1" v-model="month">
-            <input type="number" placeholder="гггг" class="form-control col-6" min="1900" max="2050" step="1" v-model="year">
+            <input type="number" placeholder="гггг" class="form-control col-6" min="1900" max="2050" step="1"
+                   v-model="year">
         </form>
 
         <div class='mt-2'>
@@ -131,13 +140,13 @@
 
 
         <h4 class='copy' onclick="setSelection('chs')">Число Сознания</h4>
-        <pre id="chs">{{day && chsDescription[chs - 1]}}</pre>
+        <div id="chs" class="large-text">{{day && chsDescription[chs - 1]}}</div>
         <h4 class='copy' onclick="setSelection('mission')">Миссия</h4>
-        <pre id="mission">{{day && month && year && missionDescription[mission - 1]}}</pre>
+        <div id="mission" class="large-text">{{day && month && year && missionDescription[mission - 1]}}</div>
         <h4 class='copy' onclick="setSelection('task')">Задача от Творца</h4>
-        <pre id="task">{{day && taskDescription[chs - 1]}}</pre>
+        <div id="task" class="large-text">{{day && taskDescription[chs - 1]}}</div>
         <h4 class='copy' onclick="setSelection('year')">Личный Год</h4>
-        <pre id="year">{{day && month && yearDescription[selfYear - 1]}}</pre>
+        <div id="year" class="large-text">{{day && month && yearDescription[selfYear - 1]}}</div>
     </div>
     <hr>
     <blockquote class="text-center blockquote mb-0" style="font-size: 10px;">
@@ -151,7 +160,8 @@
         <h3 id='number' class='anchor'>Посчитать Число, Город, Имя, Карточку или Телефон </h3>
         <div>
             <span><i>Буквы считает только на английском для точности</i></span>
-            <input type="text"  pattern="[A-Za-z]" placeholder="Введите текст на английском. Например, Moskva" v-model="textCalc"
+            <input type="text" pattern="[A-Za-z]" placeholder="Введите текст на английском. Например, Moskva"
+                   v-model="textCalc"
                    class="form-control mb-4 mt-2">
             <div>
                 <strong>Итоговая Цифра: {{textCalcResult}}</strong>
@@ -174,7 +184,7 @@
 
     <div class="anchor mt-4" id="invite">
         <h3 class='copy' onclick="setSelection('inviteText')">Приглашение на разбор</h3>
-        <pre id="inviteText">{{inviteDescription}}</pre>
+        <div id="inviteText" class="large-text">{{inviteDescription}}</div>
     </div>
     <hr>
     <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
