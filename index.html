@@ -85,141 +85,160 @@
     .large-text {
       white-space: pre-wrap;
     }
+
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="container-fluid mt-5 pt-3" id="app">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <div class="d-flex align-items-center">
-        <a class="navbar-brand" href="#">Сюцай PRO</a>
-        <button class="btn btn-primary mr-3" type="button" data-toggle="collapse" data-target="#calendar"
-          aria-expanded="false" aria-controls="calendar">
-          Календарь
-        </button>
-        <a href="https://t.me/suisai_pro" target="_blank">Telegram</a>
-    </nav>
-    <div>Telegram <a href="https://t.me/suisai_pro" target="_blank">t.me/suisai_pro</a> - присоединяйтесь!</div>
-    <div class='card my-3' data-toggle="collapse" data-target="#calendar">
-      <div class='card-body'>
-        <h6 class="card-title">Календарь Сюцай PRO</h6>
-        <div class="collapse" id="calendar">
-          <p>Пишите Дмитрию по всем вопросам <i><a href="https://t.me/dmitriy_tselovalnov2" class="card-link"
-                target="_blank">t.me/dmitriy_tselovalnov2</a></i></p>
-          <a href="https://docs.google.com/spreadsheets/d/1w5m2Fek34fIsUvyStTT3AtPRsxhe07lPu0KO8VO8FFs/edit?usp=sharing"
-            class="card-link" target="_blank">Открыть Демо</a>
-          <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
-          <div style="max-width: 500px;">
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="d-flex align-items-center page-container">
+          <a class="navbar-brand" href="#">Сюцай PRO</a>
+          <button class="btn btn-primary mr-3" type="button" data-toggle="collapse" data-target="#calendar"
+            aria-expanded="false" aria-controls="calendar">
+            Календарь
+          </button>
+          <a href="https://t.me/suisai_pro" target="_blank">Telegram</a>
+        </div>
+      </nav>
+    </header>
 
-            <iframe width="100%" height="400" src="https://www.youtube.com/embed/dZdfkh1NVuU"
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+    <main class="page-container">
+      <!-- О Сюцай-->
+      <div class='card my-3' data-toggle="collapse" data-target="#about">
+        <div class='card-body'>
+          <h6 class="card-title">О науке Сюцай</h6>
+          <div class="collapse" id="about">
+
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div id='express mt-5' class='anchor'>
-        <h3 class='copy' onclick="setSelection('consultation')">Экспресс Консультация</h3>
-      </div>
+      <!-- КАЛЕНДАРЬ -->
+      <div class='card my-3' data-toggle="collapse" data-target="#calendar">
+        <div class='card-body'>
+          <h6 class="card-title">Календарь Сюцай PRO</h6>
+          <div class="collapse" id="calendar">
+            <p>Пишите Дмитрию по всем вопросам <i><a href="https://t.me/dmitriy_tselovalnov2" class="card-link"
+                  target="_blank">t.me/dmitriy_tselovalnov2</a></i></p>
+            <a href="https://docs.google.com/spreadsheets/d/1w5m2Fek34fIsUvyStTT3AtPRsxhe07lPu0KO8VO8FFs/edit?usp=sharing"
+              class="card-link" target="_blank">Открыть Демо</a>
+            <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
+            <div style="max-width: 500px;">
 
-      <form action="#" class="form-inline">
-
-        <input type="text" placeholder="ФИО" class="form-control" v-model="fio">
-
-      </form>
-      <form action="#" class="form-inline mt-2">
-        <input type="number" placeholder="дд" class="form-control col-3" min="1" max="31" step="1" v-model="day">
-        <input type="number" placeholder="мм" class="form-control col-3" min="1" max="12" step="1" v-model="month">
-        <input type="number" placeholder="гггг" class="form-control col-6" min="1900" max="2050" step="1"
-          v-model="year">
-      </form>
-
-      <div class='mt-2'>
-        <h6>Нажмите на заголовки или кнопку для выделения и копирования </h6>
-        <button class='btn btn-sm btn-primary' onclick="setSelection('consultation')">ВСЁ</button>
-
-        <button class='btn btn-sm btn-success' onclick="setSelection('chs')">ЧС</button>
-        <button class='btn btn-sm btn-success' onclick="setSelection('mission')">Миссия</button>
-        <button class='btn btn-sm btn-success' onclick="setSelection('task')">Задача</button>
-        <button class='btn btn-sm btn-success' onclick="setSelection('year')">Год</button>
-      </div>
-    </div>
-    <hr>
-    <div id='consultation'>
-      <h3 class='copy mb-2' onclick="setSelection('consultation')">Экспресс-консультация по науке Сюцай</h3>
-      <p>{{fio && `Имя: ${fio}`}}</p>
-      <p>Дата рождения: {{day}}.{{month}}.{{year}}</p>
-      <p>Число Сознания: {{chs}}. Миссия: {{mission}}. Личный Год: {{selfYear}}</p>
-      <br>
-
-
-      <h4 class='copy' onclick="setSelection('chs')">Число Сознания</h4>
-      <div id="chs" class="large-text">{{day && chsDescription[chs - 1]}}</div>
-      <h4 class='copy' onclick="setSelection('mission')">Миссия</h4>
-      <div id="mission" class="large-text">{{day && month && year && missionDescription[mission - 1]}}</div>
-      <h4 class='copy' onclick="setSelection('task')">Задача от Творца</h4>
-      <div id="task" class="large-text">{{day && taskDescription[chs - 1]}}</div>
-      <h4 class='copy' onclick="setSelection('year')">Личный Год</h4>
-      <div id="year" class="large-text">{{day && month && yearDescription[selfYear - 1]}}</div>
-    </div>
-    <hr>
-    <blockquote class="text-center blockquote mb-0" style="font-size: 10px;">
-      <footer class="blockquote-footer">Мы - Мастера, и для нас этот сайт в подарок, абсолютно без оплаты, всегда!
-        <br /><cite>Если от вас хотел кто-то деньги за подарок, спросите его дату рождения ^-^</cite>
-        <br /><cite>Сайт: <a href='https://lyumih.github.io/suisai-express/'
-            target="_blank">https://lyumih.github.io/suisai-express/</a></cite>
-      </footer>
-    </blockquote>
-    <hr>
-    <div>
-      <h3 id='number' class='anchor'>Посчитать Число, Город, Имя, Карточку или Телефон </h3>
-      <div>
-        <span><i>Буквы считает только на английском для точности</i></span>
-        <input type="text" pattern="[A-Za-z]" placeholder="Введите текст на английском. Например, Moskva"
-          v-model="textCalc" class="form-control mb-4 mt-2">
-        <div>
-          <strong>Итоговая Цифра: {{textCalcResult}}</strong>
-          <ul class="list-group">
-            <li class="list-group-item" :class="{active: textCalcResult==1}">1 Популярность</li>
-            <li class="list-group-item" :class="{active: textCalcResult==2}">2 Личное благополучие, к
-              замужеству
-            </li>
-            <li class="list-group-item" :class="{active: textCalcResult==3}">3 Солидность</li>
-            <li class="list-group-item" :class="{active: textCalcResult==4}">4 Отчужденность</li>
-            <li class="list-group-item" :class="{active: textCalcResult==5}">5 Артистизм</li>
-            <li class="list-group-item" :class="{active: textCalcResult==6}">6 Успех, к замужеству</li>
-            <li class="list-group-item" :class="{active: textCalcResult==7}">7 Вызов природе</li>
-            <li class="list-group-item" :class="{active: textCalcResult==8}">8 Постоянный упорный труд</li>
-            <li class="list-group-item" :class="{active: textCalcResult==9}">9 Эмоциональная глубина</li>
-          </ul>
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/dZdfkh1NVuU"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div>Наш Telegram <a href="https://t.me/suisai_pro" target="_blank">t.me/suisai_pro</a> - присоединяйтесь!</div>
 
-    <div class="anchor mt-4" id="invite">
-      <h3 class='copy' onclick="setSelection('inviteText')">Приглашение на разбор</h3>
-      <div id="inviteText" class="large-text">{{inviteDescription}}</div>
-    </div>
-    <hr>
-    <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
-    <div style="max-width: 500px;">
+      <!-- Эксперсс консультация -->
+      <div>
+        <div id='express mt-5' class='anchor'>
+          <h3 class='copy' onclick="setSelection('consultation')">Экспресс Консультация</h3>
+        </div>
 
-      <iframe width="100%" height="400" src="https://www.youtube.com/embed/rKDj7fX3fq8" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </div>
-    <hr>
+        <form action="#" class="form-inline">
 
-    <p class='anchor' id='contacts'>
-    <h3>Контакты</h3>
-    <h6>Пишите нам по всем вопросам</h6>
-    Дмитрий Целовалов: <a href="https://t.me/dmitriy_tselovalnov2">t.me/dmitriy_tselovalnov2</a>, WhatsApp: <a
-      href="tel:79200787683">+79200787683</a><br>
-    Михаил Иванов: <a href="https://t.me/mikhail_eco_coach" target="_blank">t.me/mikhail_eco_coach</a> , WhatsApp: <a
-      href="tel:79105990489">+79105990489</a>
+          <input type="text" placeholder="ФИО" class="form-control" v-model="fio">
+
+        </form>
+        <form action="#" class="form-inline mt-2">
+          <input type="number" placeholder="дд" class="form-control col-3" min="1" max="31" step="1" v-model="day">
+          <input type="number" placeholder="мм" class="form-control col-3" min="1" max="12" step="1" v-model="month">
+          <input type="number" placeholder="гггг" class="form-control col-6" min="1900" max="2050" step="1"
+            v-model="year">
+        </form>
+
+        <div class='mt-2'>
+          <h6>Нажмите на заголовки или кнопку для выделения и копирования </h6>
+          <button class='btn btn-sm btn-primary' onclick="setSelection('consultation')">ВСЁ</button>
+
+          <button class='btn btn-sm btn-success' onclick="setSelection('chs')">ЧС</button>
+          <button class='btn btn-sm btn-success' onclick="setSelection('mission')">Миссия</button>
+          <button class='btn btn-sm btn-success' onclick="setSelection('task')">Задача</button>
+          <button class='btn btn-sm btn-success' onclick="setSelection('year')">Год</button>
+        </div>
+      </div>
+      <hr>
+      <div id='consultation'>
+        <h3 class='copy mb-2' onclick="setSelection('consultation')">Экспресс-консультация по науке Сюцай</h3>
+        <p>{{fio && `Имя: ${fio}`}}</p>
+        <p>Дата рождения: {{day}}.{{month}}.{{year}}</p>
+        <p>Число Сознания: {{chs}}. Миссия: {{mission}}. Личный Год: {{selfYear}}</p>
+        <br>
+
+
+        <h4 class='copy' onclick="setSelection('chs')">Число Сознания</h4>
+        <div id="chs" class="large-text">{{day && chsDescription[chs - 1]}}</div>
+        <h4 class='copy' onclick="setSelection('mission')">Миссия</h4>
+        <div id="mission" class="large-text">{{day && month && year && missionDescription[mission - 1]}}</div>
+        <h4 class='copy' onclick="setSelection('task')">Задача от Творца</h4>
+        <div id="task" class="large-text">{{day && taskDescription[chs - 1]}}</div>
+        <h4 class='copy' onclick="setSelection('year')">Личный Год</h4>
+        <div id="year" class="large-text">{{day && month && yearDescription[selfYear - 1]}}</div>
+      </div>
+      <hr>
+      <div>
+        <h3 id='number' class='anchor'>Посчитать Число, Город, Имя, Карточку или Телефон </h3>
+        <div>
+          <span><i>Буквы считает только на английском для точности</i></span>
+          <input type="text" pattern="[A-Za-z]" placeholder="Введите текст на английском. Например, Moskva"
+            v-model="textCalc" class="form-control mb-4 mt-2">
+          <div>
+            <strong>Итоговая Цифра: {{textCalcResult}}</strong>
+            <ul class="list-group">
+              <li class="list-group-item" :class="{active: textCalcResult==1}">1 Популярность</li>
+              <li class="list-group-item" :class="{active: textCalcResult==2}">2 Личное благополучие, к
+                замужеству
+              </li>
+              <li class="list-group-item" :class="{active: textCalcResult==3}">3 Солидность</li>
+              <li class="list-group-item" :class="{active: textCalcResult==4}">4 Отчужденность</li>
+              <li class="list-group-item" :class="{active: textCalcResult==5}">5 Артистизм</li>
+              <li class="list-group-item" :class="{active: textCalcResult==6}">6 Успех, к замужеству</li>
+              <li class="list-group-item" :class="{active: textCalcResult==7}">7 Вызов природе</li>
+              <li class="list-group-item" :class="{active: textCalcResult==8}">8 Постоянный упорный труд</li>
+              <li class="list-group-item" :class="{active: textCalcResult==9}">9 Эмоциональная глубина</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="anchor mt-4" id="invite">
+        <h3 class='copy' onclick="setSelection('inviteText')">Приглашение на разбор</h3>
+        <div id="inviteText" class="large-text">{{inviteDescription}}</div>
+      </div>
+      <hr>
+      <h3 class='anchor' id='instructions'>Видеоинструкция</h3>
+      <div style="max-width: 500px;">
+
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/rKDj7fX3fq8" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <hr>
+    </main>
+
+    <footer class="page-container">
+      <p class='anchor' id='contacts'>
+      <h3>Контакты</h3>
+      <h6>Пишите нам по всем вопросам</h6>
+      Дмитрий Целовалов: <a href="https://t.me/dmitriy_tselovalnov2">t.me/dmitriy_tselovalnov2</a>, WhatsApp: <a
+        href="tel:79200787683">+79200787683</a><br>
+      Михаил Иванов: <a href="https://t.me/mikhail_eco_coach" target="_blank">t.me/mikhail_eco_coach</a> , WhatsApp: <a
+        href="tel:79105990489">+79105990489</a>
+    </footer>
+
   </div>
 
   <script>
