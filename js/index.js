@@ -7,14 +7,16 @@ const app = new Vue({
     month: "",
     year: "",
     chsDescription: [],
+    triggers: [],
     yearDescription: [],
     missionDescription: [],
     taskDescription: [],
     inviteDescription: '',
   },
   created() {
-    this.yearDescription = yearDescription,
+    this.yearDescription = yearDescription
     this.chsDescription = chsDescription
+    this.triggers = triggers
     this.missionDescription = missionDescription
     this.taskDescription = taskDescription
     this.inviteDescription = inviteDescription

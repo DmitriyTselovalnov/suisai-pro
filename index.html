@@ -47,6 +47,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script defer src="js/suisai.js"></script>
   <script defer src="js/descriptions/chsDescription.js"></script>
+  <script defer src="js/descriptions/triggers.js"></script>
   <script defer src="js/descriptions/missionDescription.js"></script>
   <script defer src="js/descriptions/taskDescription.js"></script>
   <script defer src="js/descriptions/yearDescription.js"></script>
@@ -315,6 +316,8 @@
 
         <h4 class='copy' onclick="setSelection('chs')">Число Сознания</h4>
         <div id="chs" class="large-text">{{day && chsDescription[chs - 1]}}</div>
+        <h4 class='copy' onclick="setSelection('triggers')">Триггеры Числа Сознания</h4>
+        <div id="triggers" class="large-text">{{day && triggers[chs - 1]}}</div>
         <h4 class='copy' onclick="setSelection('mission')">Миссия</h4>
         <div id="mission" class="large-text">{{day && month && year && missionDescription[mission - 1]}}</div>
         <h4 class='copy' onclick="setSelection('task')">Задача от Творца</h4>
